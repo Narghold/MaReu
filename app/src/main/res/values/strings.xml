@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name" translatable="false">Ma Réu</string>
+
+    <!-- IMAGE VIEW DESCRIPTIONS -->
+    <string name="meeting_delete_button" translatable="false">Meeting delete button</string>
+
+    <!-- TABS -->
+    <string name="tab_info">Informations</string>
+    <string name="tab_participants">Participants</string>
+
+    <!-- ADD NEW MEETING TEXTS -->
+    <string name="add_new_meeting_title" translatable="false">Créer une nouvelle réunion :</string>
+    <string name="add_new_title_txt" translatable="false">Sujet :</string>
+    <string name="add_new_title_input" translatable="false">Entrez le sujet de la réunion</string>
+    <string name="add_new_time_txt" translatable="false">Heure :</string>
+    <string name="add_new_date_txt">Date :</string>
+    <string name="add_new_place_txt" translatable="false">Salle :</string>
+    <string name="add_new_participants_txt" translatable="false">Participants :</string>
+    <string name="add_new_participants_input" translatable="false">E-mail</string>
+    <string name="participant_resume_zero" translatable="false">Encore personne ici !</string>
+
+    <!-- STRING FOR BUTTONS -->
+    <string name="add_new_participants_btn" translatable="false">Ajouter</string>
+    <string name="cancel_new_meeting_btn" translatable="false">Annuler</string>
+    <string name="confirm_new_meeting_btn" translatable="false">Confirmer</string>
+
+    <!-- ARRAY FOR PLACES SPINNER -->
+    <string-array name="place_spinner_meeting">
+        <item>@string/place_spinner_mario</item>
+        <item>@string/place_spinner_luigi</item>
+        <item>@string/place_spinner_peach</item>
+        <item>@string/place_spinner_bowser</item>
+        <item>@string/place_spinner_wario</item>
+        <item>@string/place_spinner_waluigi</item>
+        <item>@string/place_spinner_daisy</item>
+        <item>@string/place_spinner_donkey_kong</item>
+        <item>@string/place_spinner_yoshi</item>
+        <item>@string/place_spinner_toad</item>
+    </string-array>
+
+    <!-- STRINGS FOR DATE SPINNER -->
+    <string name="date_spinner_all">Tous</string>
+    <string name="date_spinner_today">Aujourd\'hui</string>
+    <string name="date_spinner_tomorrow">Demain</string>
+    <string name="date_spinner_this_week">Cette semaine</string>
+    <string name="date_spinner_next_week">La semaine prochaine</string>
+    <string name="date_spinner_month">Ce mois-ci</string>
+
+    <!-- ARRAY FOR DATE SPINNER CHOICE -->
+    <string-array name="date_spinner_choice">
+        <item>@string/date_spinner_all</item>
+        <item>@string/date_spinner_today</item>
+        <item>@string/date_spinner_tomorrow</item>
+        <item>@string/date_spinner_this_week</item>
+        <item>@string/date_spinner_next_week</item>
+        <item>@string/date_spinner_month</item>
+    </string-array>
+
+    <!-- STRINGS FOR PLACE SPINNER -->
+    <string name="place_spinner_all">Tous</string>
+    <string name="place_spinner_mario">Mario</string>
+    <string name="place_spinner_luigi">Luigi</string>
+    <string name="place_spinner_peach">Peach</string>
+    <string name="place_spinner_bowser">Bowser</string>
+    <string name="place_spinner_wario">Wario</string>
+    <string name="place_spinner_waluigi">Waluigi</string>
+    <string name="place_spinner_daisy">Daisy</string>
+    <string name="place_spinner_donkey_kong">Donkey Kong</string>
+    <string name="place_spinner_yoshi">Yoshi</string>
+    <string name="place_spinner_toad">Toad</string>
+
+
+    <!-- ARRAY FOR PLACES SPINNER CHOICE-->
+    <string-array name="place_spinner_choice">
+        <item>@string/place_spinner_all</item>
+        <item>@string/place_spinner_mario</item>
+        <item>@string/place_spinner_luigi</item>
+        <item>@string/place_spinner_peach</item>
+        <item>@string/place_spinner_bowser</item>
+        <item>@string/place_spinner_wario</item>
+        <item>@string/place_spinner_waluigi</item>
+        <item>@string/place_spinner_daisy</item>
+        <item>@string/place_spinner_donkey_kong</item>
+        <item>@string/place_spinner_yoshi</item>
+        <item>@string/place_spinner_toad</item>
+    </string-array>
+
+    <!-- TITLE FOR TOOLBAR -->
+    <string name="filter_icon">Filtre</string>
+
+    <!-- TITLE SPINNERS OF FILTER -->
+    <string name="title_date_spinner">Date</string>
+    <string name="title_place_spinner">Salle</string>
+
+</resources>
