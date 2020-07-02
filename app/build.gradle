@@ -44,6 +44,8 @@ dependencies {
     // UNIT TEST
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+    //Joda-time for tests
+    testImplementation 'joda-time:joda-time:2.10.3'
 
     //ButterKnife
     //noinspection AnnotationProcessorOnCompilePath
