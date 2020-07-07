@@ -1,8 +1,11 @@
 package com.dubois.yann.mareu;
 
+import android.content.res.Resources;
+
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.ViewPagerActions;
 import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -35,11 +38,11 @@ import static org.hamcrest.core.IsNull.notNullValue;
 @RunWith(AndroidJUnit4.class)
 public class FilterDateTest {
 
+    Resources resource = InstrumentationRegistry.getInstrumentation().getTargetContext().getResources();
+
     @Rule
     public ActivityTestRule<ListMeetingActivity> mActivityRule =
-            new ActivityTestRule<>(ListMeetingActivity.class);
-
-
+            new ActivityTestRule<>(ListMeetingActivity.class, true, true);
 
     @Before
     public void setUp() {
@@ -63,13 +66,11 @@ public class FilterDateTest {
 
     @Test
     public void dateFilterAction_today(){
-        //Resources resource = InstrumentationRegistry.getInstrumentation().getContext().getResources();
-
         //Create meeting list
-        /*createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
+        createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
         createNewMeeting("Tomorrow", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 1);
         createNewMeeting("Next Week", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 8);
-        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);*/
+        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);
 
         //Click on filter tab item
         onView(withId(R.id.action_filter)).perform(click());
@@ -77,7 +78,7 @@ public class FilterDateTest {
 
         //Click on spinner item "Today"
         onView(withId(R.id.date_spinner)).perform(click());
-        onData(is("Aujourd'hui")).perform(click());
+        onData(is(resource.getString(R.string.date_spinner_today))).perform(click());
         //Check if the correct meeting is displayed
         onView(withId(R.id.list_meeting_container)).check(withItemCount(1));
         onView(withText("Today")).check(matches(isDisplayed()));
@@ -89,10 +90,10 @@ public class FilterDateTest {
     @Test
     public void dateFilterAction_tomorrow(){
         //Create meeting list
-        /*createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
+        createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
         createNewMeeting("Tomorrow", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 1);
         createNewMeeting("Next Week", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 8);
-        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);*/
+        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);
 
         //Click on filter tab item
         onView(withId(R.id.action_filter)).perform(click());
@@ -135,10 +136,10 @@ public class FilterDateTest {
     @Test
     public void dateFilterAction_nextWeek() {
         //Create meeting list
-        /*createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
+        createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
         createNewMeeting("Tomorrow", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 1);
         createNewMeeting("Next Week", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 8);
-        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);*/
+        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);
 
         //Click on filter tab item
         onView(withId(R.id.action_filter)).perform(click());
@@ -158,10 +159,10 @@ public class FilterDateTest {
     @Test
     public void dateFilterAction_thisMonth() {
         //Create meeting list
-        /*createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
+        createNewMeeting("Today", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth());
         createNewMeeting("Tomorrow", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 1);
         createNewMeeting("Next Week", LocalDateTime.now().getMonthOfYear(), LocalDateTime.now().getDayOfMonth() + 8);
-        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);*/
+        createNewMeeting("Next Month", LocalDateTime.now().getMonthOfYear() + 1, LocalDateTime.now().getDayOfMonth() + 1);
 
         //Click on filter tab item
         onView(withId(R.id.action_filter)).perform(click());
