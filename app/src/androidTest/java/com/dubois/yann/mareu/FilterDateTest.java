@@ -37,7 +37,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 @RunWith(AndroidJUnit4.class)
 public class FilterDateTest {
 
-    Resources resource = InstrumentationRegistry.getInstrumentation().getTargetContext().getResources();
+    Resources res = InstrumentationRegistry.getInstrumentation().getTargetContext().getResources();
     MeetingApiService service = DI.getMeetingApiService();
 
     @Rule
@@ -51,10 +51,10 @@ public class FilterDateTest {
 
         service.getMeetingList().clear();
 
-        Meeting today = new Meeting("Today", resource.getString(R.string.place_spinner_mario), LocalDateTime.now(), 1, new ArrayList<>());
-        Meeting tomorrow = new Meeting("Tomorrow", resource.getString(R.string.place_spinner_mario), LocalDateTime.now().plusDays(1), 1, new ArrayList<>());
-        Meeting nextWeek = new Meeting("Next Week", resource.getString(R.string.place_spinner_mario), LocalDateTime.now().plusDays(8), 1, new ArrayList<>());
-        Meeting nextMonth = new Meeting("Next Month", resource.getString(R.string.place_spinner_mario), LocalDateTime.now().plusMonths(1).plusDays(1), 1, new ArrayList<>());
+        Meeting today = new Meeting("Today", res.getString(R.string.place_spinner_mario), LocalDateTime.now(), 1, new ArrayList<>());
+        Meeting tomorrow = new Meeting("Tomorrow", res.getString(R.string.place_spinner_mario), LocalDateTime.now().plusDays(1), 2, new ArrayList<>());
+        Meeting nextWeek = new Meeting("Next Week", res.getString(R.string.place_spinner_mario), LocalDateTime.now().plusDays(8), 3, new ArrayList<>());
+        Meeting nextMonth = new Meeting("Next Month", res.getString(R.string.place_spinner_mario), LocalDateTime.now().plusMonths(1).plusDays(1), 4, new ArrayList<>());
 
         service.addNewMeeting(today);
         service.addNewMeeting(tomorrow);
@@ -70,7 +70,7 @@ public class FilterDateTest {
 
         //Click on spinner item "Today"
         onView(withId(R.id.date_spinner)).perform(click());
-        onData(is(resource.getString(R.string.date_spinner_today))).perform(click());
+        onData(is(res.getString(R.string.date_spinner_today))).perform(click());
         //Check if the correct meeting is displayed
         onView(withId(R.id.list_meeting_container)).check(withItemCount(1));
         onView(withText("Today")).check(matches(isDisplayed()));
@@ -87,7 +87,7 @@ public class FilterDateTest {
 
         //Click on spinner item "Tomorrow"
         onView(withId(R.id.date_spinner)).perform(click());
-        onData(is("Demain")).perform(click());
+        onData(is(res.getString(R.string.date_spinner_tomorrow))).perform(click());
         //Check if the correct meeting is displayed
         onView(withId(R.id.list_meeting_container)).check(withItemCount(1));
         onView(withText("Tomorrow")).check(matches(isDisplayed()));
@@ -104,7 +104,7 @@ public class FilterDateTest {
 
         //Click on spinner item "This Week"
         onView(withId(R.id.date_spinner)).perform(click());
-        onData(is("Cette semaine")).perform(click());
+        onData(is(res.getString(R.string.date_spinner_this_week))).perform(click());
         //Check if the correct meeting is displayed
         onView(withId(R.id.list_meeting_container)).check(withItemCount(2));
         onView(withText("Today")).check(matches(isDisplayed()));
@@ -121,7 +121,7 @@ public class FilterDateTest {
 
         //Click on spinner item "Next Week"
         onView(withId(R.id.date_spinner)).perform(click());
-        onData(is("La semaine prochaine")).perform(click());
+        onData(is(res.getString(R.string.date_spinner_next_week))).perform(click());
         //Check if the correct meeting is displayed
         onView(withId(R.id.list_meeting_container)).check(withItemCount(1));
         onView(withText("Next Week")).check(matches(isDisplayed()));
@@ -138,7 +138,7 @@ public class FilterDateTest {
 
         //Click on spinner item "This Month"
         onView(withId(R.id.date_spinner)).perform(click());
-        onData(is("Ce mois-ci")).perform(click());
+        onData(is(res.getString(R.string.date_spinner_month))).perform(click());
         //Check if the correct meeting is displayed
         onView(withId(R.id.list_meeting_container)).check(withItemCount(3));
         onView(withText("Today")).check(matches(isDisplayed()));

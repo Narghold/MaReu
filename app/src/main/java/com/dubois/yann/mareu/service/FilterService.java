@@ -38,26 +38,26 @@ public class FilterService implements FilterApiService{
                 if (!meetingDate.toDateTimeAtStartOfDay().equals(dateFilter.toDateTimeAtStartOfDay())) {
                     iterator.remove();
                 }
-            }else if (date.equals("Demain")){
+            }else if (date.equals(res.getString(R.string.date_spinner_tomorrow))){
                 dateFilter = LocalDate.now().plusDays(1);
                 if (!meetingDate.toDateTimeAtStartOfDay().equals(dateFilter.toDateTimeAtStartOfDay())) {
                     iterator.remove();
                 }
-            }else if (date.equals("Cette semaine")){
+            }else if (date.equals(res.getString(R.string.date_spinner_this_week))){
                 dateFilter = LocalDate.now().plusWeeks(1);
                 LocalDate dateNow = LocalDate.now();
                 Interval week = new Interval(dateNow.toDateTimeAtStartOfDay(), dateFilter.toDateTimeAtStartOfDay());
                 if (!week.contains(meetingDate.toDateTimeAtStartOfDay())) {
                     iterator.remove();
                 }
-            }else if (date.equals("La semaine prochaine")) {
+            }else if (date.equals(res.getString(R.string.date_spinner_next_week))) {
                 LocalDate dateAfter = LocalDate.now().plusWeeks(2);
                 LocalDate dateBefore = LocalDate.now().plusWeeks(1);
                 Interval secondWeek = new Interval(dateBefore.toDateTimeAtStartOfDay(), dateAfter.toDateTimeAtStartOfDay());
                 if (!secondWeek.contains(meetingDate.toDateTimeAtStartOfDay())) {
                     iterator.remove();
                 }
-            }else if (date.equals("Ce mois-ci")) {
+            }else if (date.equals(res.getString(R.string.date_spinner_month))) {
                 LocalDate dateNow = LocalDate.now();
                 dateFilter = LocalDate.now().plusMonths(1);
                 Interval month = new Interval(dateNow.toDateTimeAtStartOfDay(), dateFilter.toDateTimeAtStartOfDay());
