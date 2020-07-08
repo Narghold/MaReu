@@ -6,6 +6,7 @@ package com.dubois.yann.mareu.service;
 public class DI {
 
     private static MeetingApiService meetingService = new MeetingService();
+    private static FilterApiService filterService = new FilterService();
 
     /**
      * Get an instance on @{@link MeetingApiService}
@@ -15,11 +16,16 @@ public class DI {
         return meetingService;
     }
 
-    /**
-     *  Get always a new instance on @{@link MeetingApiService}. Useful for tests, so we ensure the context is clean.
-     *  @return
-     */
-    public static MeetingApiService getNewInstanceMeetingApiService() {
+    public static MeetingApiService getNewMeetingApiService() {
         return new MeetingService();
     }
+
+    /**
+     * Get an instance on @{@link FilterApiService}
+     * @return
+     */
+    public static FilterApiService getFilterApiService(){
+        return filterService;
+    }
+
 }

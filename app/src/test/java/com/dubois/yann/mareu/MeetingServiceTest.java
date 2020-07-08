@@ -23,7 +23,7 @@ public class MeetingServiceTest {
 
     @Before
     public void setup(){
-        service = DI.getNewInstanceMeetingApiService();
+        service = DI.getMeetingApiService();
     }
 
     @Test

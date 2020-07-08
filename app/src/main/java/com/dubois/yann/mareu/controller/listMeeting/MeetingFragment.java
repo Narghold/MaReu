@@ -15,20 +15,19 @@ import com.dubois.yann.mareu.R;
 import com.dubois.yann.mareu.event.FilterEvent;
 import com.dubois.yann.mareu.model.Meeting;
 import com.dubois.yann.mareu.service.DI;
+import com.dubois.yann.mareu.service.FilterApiService;
 import com.dubois.yann.mareu.service.MeetingApiService;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.joda.time.Interval;
-import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class MeetingFragment extends Fragment {
 
     private MeetingApiService mApiService;
+    private FilterApiService mFilterService;
 
     private List<Meeting> mMeetingList = new ArrayList<>();
 
@@ -38,6 +37,7 @@ public class MeetingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getMeetingApiService();
+        mFilterService = DI.getFilterApiService();
     }
 
     @Override
@@ -76,10 +76,10 @@ public class MeetingFragment extends Fragment {
 
         if (isDateFiltered || isPlaceFiltered) {
             if (isDateFiltered) {
-                meetingList = dateFilter(meetingList, mDateFilter);
+                meetingList = mFilterService.dateFilter(meetingList, mDateFilter);
             }
             if (isPlaceFiltered) {
-                meetingList = placeFilter(meetingList, mPlaceFilter);
+                meetingList = mFilterService.placeFilter(meetingList, mPlaceFilter);
             }
         } else {
             meetingList = mApiService.getMeetingList();
@@ -95,55 +95,4 @@ public class MeetingFragment extends Fragment {
         mMeetingAdapter.setData(meetingList);
     }
 
-    private List<Meeting> placeFilter(List<Meeting> meetingList, String place) {
-        List<Meeting> toRemoveList = new ArrayList<>();
-        for (Meeting meeting : meetingList) {
-            if (!meeting.getMeetingPlace().equals(place)) {
-                toRemoveList.add(meeting);
-            }
-        }
-        meetingList.removeAll(toRemoveList);
-        return meetingList;
-    }
-
-    private List<Meeting> dateFilter(List<Meeting> meetingList, String date) {
-        LocalDate dateFilter;
-        Iterator<Meeting> iterator = meetingList.iterator();
-        while(iterator.hasNext()){
-            LocalDate meetingDate = iterator.next().getDateTime().toLocalDate();
-            if (date.equals(getString(R.string.date_spinner_today))){
-                dateFilter = LocalDate.now();
-                if (!meetingDate.toDateTimeAtStartOfDay().equals(dateFilter.toDateTimeAtStartOfDay())) {
-                    iterator.remove();
-                }
-            }else if (date.equals(getString(R.string.date_spinner_tomorrow))){
-                dateFilter = LocalDate.now().plusDays(1);
-                if (!meetingDate.toDateTimeAtStartOfDay().equals(dateFilter.toDateTimeAtStartOfDay())) {
-                    iterator.remove();
-                }
-            }else if (date.equals(getString(R.string.date_spinner_this_week))){
-                dateFilter = LocalDate.now().plusWeeks(1);
-                LocalDate dateNow = LocalDate.now();
-                Interval week = new Interval(dateNow.toDateTimeAtStartOfDay(), dateFilter.toDateTimeAtStartOfDay());
-                if (!week.contains(meetingDate.toDateTimeAtStartOfDay())) {
-                    iterator.remove();
-                }
-            }else if (date.equals(getString(R.string.date_spinner_next_week))) {
-                LocalDate dateAfter = LocalDate.now().plusWeeks(2);
-                LocalDate dateBefore = LocalDate.now().plusWeeks(1);
-                Interval secondWeek = new Interval(dateBefore.toDateTimeAtStartOfDay(), dateAfter.toDateTimeAtStartOfDay());
-                if (!secondWeek.contains(meetingDate.toDateTimeAtStartOfDay())) {
-                    iterator.remove();
-                }
-            }else if (date.equals(getString(R.string.date_spinner_month))) {
-                LocalDate dateNow = LocalDate.now();
-                dateFilter = LocalDate.now().plusMonths(1);
-                Interval month = new Interval(dateNow.toDateTimeAtStartOfDay(), dateFilter.toDateTimeAtStartOfDay());
-                if (!month.contains(meetingDate.toDateTimeAtStartOfDay())) {
-                    iterator.remove();
-                }
-            }
-        }
-        return meetingList;
-    }
 }
