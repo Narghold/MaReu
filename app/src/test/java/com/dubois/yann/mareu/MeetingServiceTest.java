@@ -24,6 +24,7 @@ public class MeetingServiceTest {
     @Before
     public void setup(){
         service = DI.getMeetingApiService();
+        service.getMeetingList().clear();
     }
 
     @Test

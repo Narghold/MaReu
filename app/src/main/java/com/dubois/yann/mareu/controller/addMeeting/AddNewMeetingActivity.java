@@ -25,7 +25,6 @@ public class AddNewMeetingActivity extends AppCompatActivity{
     @BindView(R.id.add_new_meeting_vp)
     ViewPager mViewPager;
 
-
     private AddNewMeetingPagerAdapter mPagerAdapter;
 
     @SuppressLint("NewApi")
