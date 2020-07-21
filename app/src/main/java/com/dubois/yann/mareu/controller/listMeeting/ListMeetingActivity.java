@@ -2,7 +2,6 @@ package com.dubois.yann.mareu.controller.listMeeting;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +62,6 @@ public class ListMeetingActivity extends AppCompatActivity {
         setFilter();
 
         mAddNewMeetingBtn.setOnClickListener(v -> {
-            Log.d("Fab clicked", "Fab has been clicked");
             Intent addNewMeetingActivity = new Intent(getApplicationContext() , AddNewMeetingActivity.class);
             startActivity(addNewMeetingActivity);
         });

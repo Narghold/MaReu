@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,7 +96,6 @@ public class InformationFragment extends Fragment{
 
         //OnClickListener to cancel activity
         mCancelButton.setOnClickListener(v -> {
-            Log.d("Cancel clicked", "btn has been clicked");
             getActivity().finish();
         });
 
@@ -122,7 +120,6 @@ public class InformationFragment extends Fragment{
 
         //OnClickListener to confirm meeting
         mConfirmButton.setOnClickListener(v -> {
-            Log.d("Confirm clicked", "btn has been clicked");
             String mTitle = mTitleInput.getText().toString();
             int mHour = mTimePicker.getCurrentHour();
             int mMinutes = mTimePicker.getCurrentMinute();

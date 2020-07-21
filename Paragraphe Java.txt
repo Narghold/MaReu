@@ -1,4 +1,0 @@
-Le language Java est le language que j'utilises actuelement et que je sais utiliser contrairement au Kotlin ou C.
-
-De plus, je penses qu'il est nécessaire d'utiliser un language de programmation qu'un maximum de développeurs peuvent connaître. En vue, par exemple, de la reprise du projet
-ou la création d'une mise à jour par un autre développeur que moi même.
