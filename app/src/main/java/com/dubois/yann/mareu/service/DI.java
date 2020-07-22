@@ -16,10 +16,6 @@ public class DI {
         return meetingService;
     }
 
-    public static MeetingApiService getNewMeetingApiService() {
-        return new MeetingService();
-    }
-
     /**
      * Get an instance on @{@link FilterApiService}
      * @return

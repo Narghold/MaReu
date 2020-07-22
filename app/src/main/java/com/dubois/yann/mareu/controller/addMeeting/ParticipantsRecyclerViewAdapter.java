@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,10 +25,11 @@ public class ParticipantsRecyclerViewAdapter extends RecyclerView.Adapter<Partic
         mParticipantList = items;
     }
 
+    @NonNull
     @Override
     public ParticipantsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_participant, parent, false);
-        return new ParticipantsRecyclerViewAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class ParticipantsRecyclerViewAdapter extends RecyclerView.Adapter<Partic
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_list_participant)
         ConstraintLayout mParticipant;
         @BindView(R.id.participant_mail)

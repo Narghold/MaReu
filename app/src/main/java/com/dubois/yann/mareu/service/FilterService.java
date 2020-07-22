@@ -15,6 +15,12 @@ import java.util.List;
 
 public class FilterService implements FilterApiService{
 
+    private List<Meeting> mFilteredList = new ArrayList<>();
+
+    public List<Meeting> getFilteredList(){
+        return mFilteredList;
+    }
+
     public List<Meeting> placeFilter(List<Meeting> meetingList, String place) {
         List<Meeting> toRemoveList = new ArrayList<>();
         for (Meeting meeting : meetingList) {
