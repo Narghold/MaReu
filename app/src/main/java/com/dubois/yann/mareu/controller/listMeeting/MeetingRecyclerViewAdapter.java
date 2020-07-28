@@ -1,6 +1,7 @@
 package com.dubois.yann.mareu.controller.listMeeting;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,7 @@ class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecyclerVie
         holder.mMeetingCircle.setColorFilter(meeting.getColor());
 
         holder.mMeetingDeleteBtn.setOnClickListener(v -> {
+            Log.d("Delete button pressed", "Delete button pressed");
             mApiService.deleteMeeting(meeting);
             setData(mMeetingList);
         });

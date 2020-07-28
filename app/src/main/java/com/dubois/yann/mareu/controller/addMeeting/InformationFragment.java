@@ -77,6 +77,12 @@ public class InformationFragment extends Fragment{
 
         //Set TimePicker in 24h format
         mTimePicker.setIs24HourView(true);
+        mTimePicker.setSaveFromParentEnabled(false);
+        mTimePicker.setSaveEnabled(false);
+
+        //Date picker save
+        mDatePicker.setSaveFromParentEnabled(false);
+        mDatePicker.setSaveEnabled(false);
 
         //Set Places Spinner
         ArrayAdapter<CharSequence> mPlaceSpinnerAdapter = ArrayAdapter.createFromResource(context, R.array.place_spinner_meeting, android.R.layout.simple_spinner_item);

@@ -7,14 +7,18 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.dubois.yann.mareu.controller.listMeeting.ListMeetingActivity;
+import com.dubois.yann.mareu.model.Meeting;
 import com.dubois.yann.mareu.service.DI;
 import com.dubois.yann.mareu.service.MeetingApiService;
 import com.dubois.yann.mareu.utils.DeleteViewAction;
 
+import org.joda.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -92,7 +96,7 @@ public class MeetingListTest {
 
     @Test
     public void deleteMeetingAction_shouldSuppressMeeting(){
-        addNewMeetingAction_shouldDisplayedNewMeeting();
+        service.addNewMeeting(new Meeting("Delete", "Mario", LocalDateTime.now(), 255, new ArrayList<>()));
         onView(withId(R.id.list_meeting_container)).check(matches(isDisplayed()));
         onView(withId(R.id.list_meeting_container)).perform(RecyclerViewActions.actionOnItemAtPosition(0, new DeleteViewAction()));
         onView(withId(R.id.list_meeting_container)).check(withItemCount(0));
