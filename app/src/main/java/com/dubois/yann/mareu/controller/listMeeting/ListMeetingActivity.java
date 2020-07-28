@@ -90,6 +90,8 @@ public class ListMeetingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         mMeetingList = mApiService.getMeetingList();
+        isFilter = false;
+        setFilter();
         super.onResume();
     }
 

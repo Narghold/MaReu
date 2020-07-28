@@ -32,6 +32,7 @@ public class MeetingFragment extends Fragment {
     private List<Meeting> mMeetingList = new ArrayList<>();
 
     private MeetingRecyclerViewAdapter mMeetingAdapter;
+    private RecyclerView mRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,10 @@ public class MeetingFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_meeting, container, false);
         Context context = view.getContext();
-        RecyclerView mRecyclerView = (RecyclerView) view;
+        mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-        mMeetingAdapter = new MeetingRecyclerViewAdapter();
+        mMeetingAdapter = new MeetingRecyclerViewAdapter(mApiService.getMeetingList());
         mRecyclerView.setAdapter(mMeetingAdapter);
         return view;
     }

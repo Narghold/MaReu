@@ -1,7 +1,6 @@
 package com.dubois.yann.mareu.controller.listMeeting;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,8 +31,8 @@ class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecyclerVie
     private String mDateFilter;
     private String mPlaceFilter;
 
-    public MeetingRecyclerViewAdapter() {
-        mMeetingList = new ArrayList<>();
+    public MeetingRecyclerViewAdapter(List<Meeting> item) {
+        mMeetingList = item;
     }
 
     @NonNull
@@ -56,9 +54,10 @@ class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecyclerVie
         holder.mMeetingCircle.setColorFilter(meeting.getColor());
 
         holder.mMeetingDeleteBtn.setOnClickListener(v -> {
-            Log.d("Delete button pressed", "Delete button pressed");
             mApiService.deleteMeeting(meeting);
+            mMeetingList = mApiService.getMeetingList();
             setData(mMeetingList);
+            notifyDataSetChanged();
         });
     }
 
